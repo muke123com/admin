@@ -1,0 +1,21 @@
+.flex-box{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.h5-box{
+  .flex-box();
+  width: 1300px;
+  &>div{
+    margin: 5px;
+    width: calc((100% - 10px)/2);
+    height: 400px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+  }
+  .canvas-box{
+    canvas{
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,73 @@
+@color: #ff4422;
+@width: 60px;
+@height: @width*0.618;
+@padding: 15px;
+
+.box-shadow{
+  box-shadow: 0 2px 4px lighten(@color, 20%);
+}
+
+.less-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-around;
+  padding: @padding;
+  text-align: center;
+  .item{
+    margin: 5px;
+    width: @width;
+    height: @height;
+    line-height: @height;
+    .box-shadow();
+    &:nth-child(2n){
+      color: #fff;
+      background-color: @color;
+    }
+  }
+}
+
+.arrowUp(@color){
+  border-color:transparent transparent @color transparent;
+}
+.arrowRight(@color){
+  border-color:transparent transparent transparent @color;
+}
+.arrowDown(@color){
+  border-color:@color transparent transparent transparent;
+}
+.arrowLeft(@color){
+  border-color:transparent @color transparent transparent;
+}
+
+.arrow(@direction, @color) when (@direction = up){
+  .arrowUp(@color);
+}
+.arrow(@direction, @color) when (@direction = right){
+  .arrowRight(@color);
+}
+.arrow(@direction, @color) when (@direction = down){
+  .arrowDown(@color);
+}
+.arrow(@direction, @color) when (@direction = left){
+  .arrowLeft(@color);
+}
+.arrow{
+  width: 0;
+  height: 0;
+  border-width: 35px;
+  border-style: solid;
+}
+.arrow-up{
+  .arrow(up, @color)
+}
+.arrow-right{
+  .arrow(right, @color)
+}
+.arrow-down{
+  .arrow(down, @color)
+}
+.arrow-left{
+  .arrow(left, @color)
+}

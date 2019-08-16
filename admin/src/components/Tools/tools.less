@@ -1,0 +1,40 @@
+@import "../../common.less";
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px auto;
+  width: 1300px;
+  .item {
+    padding: 20px;
+    box-shadow: 0 1px 5px 0 #aaa;
+    h2{
+      margin-bottom: 20px;
+    }
+    .upload {
+      position: relative;
+      .btn();
+      color: #fff;
+      background-color: #282233;
+      width: 150px;
+      border-radius: 4px;
+      box-shadow: 0 1px 5px 0 #333;
+      border-color: #282233;
+      input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 9;
+      }
+    }
+    .canvas-box {
+      margin-top: 20px;
+    }
+    .tip {
+      color: #aaa;
+      font-size: 12px;
+    }
+  }
+}

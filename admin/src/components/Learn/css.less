@@ -1,0 +1,275 @@
+.learn-css3{
+  padding-bottom: 60px;
+}
+.blink {
+  margin: 10px;
+  width: 3px;
+  height: 20px;
+  animation: blink 1s infinite; /* infinite 无限重复  */
+  background-color: #000;
+}
+
+@keyframes blink {
+  0%, 100%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+}
+.filter{
+  filter: blur(5px);
+}
+.box{
+  padding: 15px;
+}
+.some-practice{
+  .block{
+    display: inline-block;
+    margin: 10px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 2px;
+    background-color: #ddd;
+    box-shadow: 0 1px 5px 0 #aaa;
+    vertical-align: middle;
+    &.block1{
+      position: relative;
+      background: #58a linear-gradient(#77a0bb, #58a);
+      &:hover{
+        .callout{
+          display: block;
+        }
+      }
+      .callout{
+        display: none;
+        position: absolute;
+        top: 120%;
+        width: 100px;
+        height: 50px;
+        background-color: #eee;
+        border: 1px solid #aaa;
+        &::before{
+          content: "";
+          position: absolute;
+          display: block;
+          top: -0.4em; left: 1em;
+          padding: 0.35em;
+          background: inherit;
+          border: inherit;
+          border-right: 0;
+          border-bottom: 0;
+          transform: rotate(45deg);
+        }
+      }
+    }
+    &.block2{
+      background: url(../../assets/1.jpg) top left,
+      url(../../assets/2.jpg) top right,
+      url(../../assets/1.jpg) bottom right,
+      url(../../assets/2.jpg) bottom left;
+      background-size: 50%;
+      background-repeat: no-repeat;
+    }
+    &.block3{
+      padding: 5px;
+      background: url(../../assets/bg.jpg);
+      .text{
+        width: 100%;
+        height: 100%;
+        border: 10px solid hsla(0,0%,100%,.3);
+        background: hsla(0,0%,100%,.5);
+        background-clip: padding-box;
+      }
+    }
+    &.block4{
+      padding: 5px;
+      background: url(../../assets/bg.jpg) no-repeat center;
+      background-origin: content-box;
+      background-size: cover;
+    }
+    &.block5{
+      background: repeating-linear-gradient(45deg, #c2ecfa, #c2ecfa 15px, #fcd9df 0, #fcd9df 30px);
+    }
+    &.block6{
+      font-size: 40px;
+      font-weight: bold;
+      color: #FCFFEC;
+      animation: textBlink 2s infinite;
+      text-shadow: 0 0 0.1em, 0 0 0.3em;
+      background-color: #282233;
+    }
+    &.block7{
+      color: #FCFFEC;
+      text-shadow: 0 0 0.1em, 0 0 0.3em;
+      background-color: #282233;
+    }
+    &.block8{
+      border-radius: 50%;
+      animation: brotate 20s linear infinite;
+      background: url(../../assets/bg.jpg) no-repeat center;
+      background-size: cover;
+    }
+  }
+}
+
+@keyframes textBlink {
+  0%, 100%{
+    color: transparent;
+  }
+  50%{
+    color: #FCFFEC;
+  }
+}
+@keyframes brotate {
+  0%{
+    transform: rotate(0deg)
+  }
+  100%{
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes panoramic {
+  to {
+    background-position: 100% 0;
+  }
+}
+
+.checkbox {
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  input[type=checkbox]{
+    position: absolute;
+    clip: rect(0px,0px,0px,0px);
+    & + label::before{
+      content: '\a0';
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 2px;
+      background-color: #fff;
+      border: 1px solid #eee;
+    }
+    &:checked + label::before{
+      background: url(../../assets/icon-checked.png) no-repeat center #fff;
+      background-size: 80%;
+    }
+  }
+}
+
+.other-practice{
+  display: flex;
+  &>div{
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: middle;
+    &.panoramic{
+      width: 200px;
+      height: 150px;
+      background: url(../../assets/wallhaven-654293.png) no-repeat left;
+      background-size: auto 100%;
+      animation: panoramic 10s linear infinite alternate;
+      animation-play-state: paused;
+      &:hover{
+        animation-play-state: running;
+      }
+    }
+    &.path{
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: #282233;
+      text-align: center;
+      .path-block{
+        display: inline-block;
+        transform-origin: 50% 75px;
+        animation: spin 10s linear infinite;
+        &::before{
+          content: '';
+          display: inline-block;
+          margin-top: 10px;
+          width: 20px;
+          height: 20px;
+          box-shadow: 0 0 30px #fff;
+          border-radius: 50%;
+          background-color: #fff;
+          background-size: cover;
+          animation: spin-reverse 10s linear infinite;
+        }
+      }
+    }
+    &.text-loading {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 300px;
+      height: 100px;
+      .load-line {
+        background-color: rgb(196, 201, 205);
+        background-image: linear-gradient(90deg, rgb(196, 201, 205), rgb(240, 240, 240), rgb(196, 201, 205));
+        background-size: 200px 100%;
+        background-repeat: no-repeat;
+        border-radius: 4px;
+        margin: 3px;
+        animation: loading 2s ease-in-out 0s infinite normal none running;
+        flex: 1 1 0px;
+      }
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: -200px 0px;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0px;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(1turn) }
+}
+@keyframes spin-reverse {
+  from { transform: rotate(1turn) }
+}
+
+.slider {
+  position: relative;
+  height: 185px;
+  &>div{
+    height: 100%;
+    background: url(../../assets/wallhaven-654293.png) no-repeat left;
+    background-size: auto 100%;
+    &.left{
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      max-width: 100%;
+      background-color: rgba(0,0,0,0.3);
+      overflow: hidden;
+      resize: horizontal;
+      z-index: 9;
+      &::before{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        background: linear-gradient(-45deg, #fff 50%, transparent 0);
+        cursor: ew-resize;
+      }
+    }
+    &.right{
+      filter: grayscale(100%);
+    }
+  }
+
+}

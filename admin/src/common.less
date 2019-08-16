@@ -1,0 +1,84 @@
+@charset "utf-8";
+@fontColor: #333;
+@bgColor: #ff4422;
+.box-shadow{
+    box-shadow: 0 2px 4px lighten(@bgColor, 20%);
+}
+html,body,h1,h2,h3,h4,h5,h6,hr,p,ul,ol,li,span,a,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,div,strong,label,em,i,b,strong,pre,legend,button,input,textarea,select,address,cite,dfn,var,code,kbd,samp,small,sup,sub
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video{
+    margin:0; padding:0; font-weight: normal; font-style: normal; box-sizing:border-box;
+}
+ul,ol,li{list-style:none;}
+a{ color: inherit}
+html,body{
+    height: 100%;
+}
+.clearfix:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+#app {
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.w-center{
+    margin: 15px auto;
+    width: 1300px;
+}
+.input {
+    padding: 5px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    outline: none;
+    vertical-align: middle;
+}
+.btn{
+    display: inline-block;
+    padding: 3px 5px;
+    border-radius: 2px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+}
+.scroll{
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-button {
+        /* 2 */
+    }
+
+    &::-webkit-scrollbar-track {
+        /* 3 */
+        background-color: #efefef;
+    }
+
+    &::-webkit-scrollbar-track-piece {
+        /* 4 */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        /* 5 */
+        background-color: #ff9900;
+        border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-corner {
+        /* 6 */
+    }
+
+    &::-webkit-resizer{
+        /* 7 */
+
+    }
+}
