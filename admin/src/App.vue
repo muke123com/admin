@@ -1,25 +1,22 @@
 <template>
-    <div id="app">
-        <header-box></header-box>
-        <router-view/>
-        <keep-alive>
-            <footer-box></footer-box>
-        </keep-alive>
-    </div>
+  <div id="app">
+    <router-view/>
+  </div>
 </template>
 
 <script>
-    import headerBox from './components/header/Header'
-    import footerBox from './components/footer/Footer'
-
-    export default {
-        components: {
-            headerBox,
-            footerBox
-        },
-        name: 'App'
-    }
+export default {
+  name: 'App'
+}
 </script>
+
 <style>
-    @import "common.less";
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
 </style>

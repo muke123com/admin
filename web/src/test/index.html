@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var db;
+        var indexedDB =
+            window.indexedDB ||
+            window.webkitIndexedDB ||
+            window.mozIndexedDB ||
+            window.msIndexedDB;
+
+        if (!indexedDB) {
+            console.log('你的浏览器不支持IndexedDB');
+        }
+        var request = indexedDB.open('demoDB', 2);
+        // 打开数据库成功后，自动调用onsuccess事件回调。
+        request.onsuccess = function (e) {
+            db = request.result;
+            console.log("数据库打开成功")
+        };
+
+        request.onupgradeneeded = function (e) {
+            db = e.target.result;
+            var objectStore;
+            if (!db.objectStoreNames.contains('person')) {
+                objectStore = db.createObjectStore('person', { autoIncrement: true });  //创建表
+                objectStore.createIndex('name', 'name', { unique: false });   // 创建索引
+                objectStore.createIndex('email', 'email', { unique: true });  // 创建索引, 不能重复
+            }
+        }
+
+        // 打开数据库失败
+        request.onerror = function (e) {
+            console.log(e.currentTarget.error.message);
+        };
+        
+        // 添加
+        function add() {
+            // 写入数据需要新建一个事务。新建时必须指定表格名称和操作模式（"只读"或"读写"）
+            var request = db.transaction(['person'], 'readwrite')
+                // 新建事务以后，通过IDBTransaction.objectStore(name)方法，拿到 IDBObjectStore 对象
+                .objectStore('person')
+                .add({ name: '小米', age: 24, email: 'aab@qq.com' })
+
+            request.onsuccess = function (event) {
+                console.log('数据写入成功');
+            };
+
+            request.onerror = function (event) {
+                console.log('数据写入失败');
+            }
+        }
+        // 读取
+        function read() {
+            var request = db.transaction(['person'])
+                .objectStore('person')
+                .get(1)
+
+            request.onerror = function (event) {
+                console.log('事务失败');
+            };
+
+            request.onsuccess = function (event) {
+                if (request.result) {
+                    console.log('Name: ' + request.result.name);
+                    console.log('Age: ' + request.result.age);
+                    console.log('Email: ' + request.result.email);
+                } else {
+                    console.log('未获得数据记录');
+                }
+            };
+        }
+
+        function readAll() {
+            var objectStore = db.transaction(['person'])
+                .objectStore('person');
+            objectStore.openCursor().onsuccess = function (e) {
+                var cursor = e.target.result;
+                console.log(cursor);
+                if (cursor) {
+                    console.log('Id: ' + cursor.key);
+                    console.log('Name: ' + cursor.value.name);
+                    console.log('Age: ' + cursor.value.age);
+                    console.log('Email: ' + cursor.value.email);
+                    cursor.continue();
+                } else {
+                    console.log('没有更多数据了！');
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

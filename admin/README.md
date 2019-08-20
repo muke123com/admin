@@ -1,4 +1,6 @@
-# vue
+# admin
+
+> A Vue.js project
 
 ## Build Setup
 
@@ -12,6 +14,9 @@ npm run dev
 # build for production with minification
 npm run build
 
+# build for production and view the bundle analyzer report
+npm run build --report
+
 # run unit tests
 npm run unit
 
@@ -20,25 +25,6 @@ npm run e2e
 
 # run all tests
 npm test
-
 ```
 
-```js
-//main.js
-Vue.prototype.GLOBAL = global; //设置全局变量
-//事件监听
-$on('text', function(msg) {
-  console.log(msg)
-});
-//事件触发
-$emit('text', msg);
-
-```
-
-## transition
-- v-enter：定义进入过渡的开始状态。在元素被插入之前生效，在元素被插入之后的下一帧移除。
-- v-enter-active：定义进入过渡生效时的状态。在整个进入过渡的阶段中应用，在元素被插入之前生效，在过渡/动画完成之后移除。这个类可以被用来定义进入过渡的过程时间，延迟和曲线函数。
-- v-enter-to: 2.1.8版及以上 定义进入过渡的结束状态。在元素被插入之后下一帧生效 (与此同时 v-enter 被移除)，在过渡/动画完成之后移除。
-- v-leave: 定义离开过渡的开始状态。在离开过渡被触发时立刻生效，下一帧被移除。
-- v-leave-active：定义离开过渡生效时的状态。在整个离开过渡的阶段中应用，在离开过渡被触发时立刻生效，在过渡/动画完成之后移除。这个类可以被用来定义离开过渡的过程时间，延迟和曲线函数。
-- v-leave-to: 2.1.8版及以上 定义离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 v-leave 被删除)，在过渡/动画完成之后移除。
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
