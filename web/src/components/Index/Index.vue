@@ -23,6 +23,6 @@
         }
     }
 </script>
-<style>
+<style scoped>
     @import "index.less";
 </style>
